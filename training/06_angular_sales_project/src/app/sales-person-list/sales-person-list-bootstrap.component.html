@@ -1,0 +1,26 @@
+<table class = "table table-hover">
+    <thead class = "table-dark">
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>SalesVolume</th>
+            <th>Met?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let temp of salesPersonList">
+            <td>{{ temp.firstName}}</td>
+            <td>{{ temp.lastName}}</td>
+            <td>{{ temp.email}}</td>
+            <td>{{ temp.salesVolume | currency: 'USD'}}</td>
+            <td>
+                <div *ngIf = "temp.salesVolume > 6000; else myblock">
+                    Yes
+                </div>
+                <ng-template #myblock>No</ng-template> 
+            </td>
+        </tr>
+    </tbody>
+
+</table>
