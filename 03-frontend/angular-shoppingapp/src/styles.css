@@ -23,6 +23,13 @@ body{
     -moz-osx-font-smoothing:grayscale
 }
 
+ngb-pagination .page-item.active .page-link {
+    background-color: #04af7c;
+    border-color: #04af7c;
+    color: black;
+    box-shadow: 0 0 0 0.1rem #04af7c;
+}
+
 ul{
     margin:0
 }
