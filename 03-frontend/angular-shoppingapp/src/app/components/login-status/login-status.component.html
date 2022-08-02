@@ -19,7 +19,11 @@
     Logout
   </button>
 
-  <button routerLink="/members" class="btn btn-outline-dark ml-1">
+  <button
+    *ngIf="isAuthenticated"
+    routerLink="/members"
+    class="btn btn-outline-dark ml-1"
+  >
     Member
   </button>
 

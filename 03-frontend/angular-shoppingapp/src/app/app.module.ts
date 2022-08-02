@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
@@ -20,14 +20,17 @@ import { LoginStatusComponent } from './components/login-status/login-status.com
 import {
   OKTA_CONFIG,
   OktaAuthModule,
-  OktaCallbackComponent
+  OktaCallbackComponent,
+  OktaAuthGuard
 } from '@okta/okta-angular';
 
 import { OktaAuth } from '@okta/okta-auth-js';
 import appConfig from './config/my-app-config';
+import { MembersPageComponent } from './components/members-page/members-page.component';
 
 // create routes
 const routes: Routes = [ 
+  { path: 'members', component: MembersPageComponent, canActivate: [OktaAuthGuard]  },
   { path: 'login/callback', component: OktaCallbackComponent },
   { path: 'login', component: LoginComponent },
   { path: 'checkout', component: CheckoutComponent },
@@ -43,6 +46,14 @@ const routes: Routes = [
 
 const oktaAuth = new OktaAuth(appConfig.oidc); // the name variable must oktaAuth
 
+function onAuthRequired(oktaAuth, injector) {
+  // Use injector to access any service available within your application
+  const router = injector.get(Router);
+ 
+  // Redirect the user to your custom login page
+  router.navigate(['/login']);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +65,8 @@ const oktaAuth = new OktaAuth(appConfig.oidc); // the name variable must oktaAut
     CartDetailsComponent,
     CheckoutComponent,
     LoginComponent,
-    LoginStatusComponent
+    LoginStatusComponent,
+    MembersPageComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -64,7 +76,7 @@ const oktaAuth = new OktaAuth(appConfig.oidc); // the name variable must oktaAut
     ReactiveFormsModule,
     OktaAuthModule
   ],
-  providers: [ProductService, {provide: OKTA_CONFIG, useValue: {oktaAuth}}],
+  providers: [ProductService, {provide: OKTA_CONFIG, useValue: {oktaAuth, onAuthRequired}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
