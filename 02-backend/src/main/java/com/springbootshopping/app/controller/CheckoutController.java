@@ -6,7 +6,6 @@ import com.springbootshopping.app.dto.Purchase;
 import com.springbootshopping.app.dto.PurchaseResponse;
 import com.springbootshopping.app.service.CheckoutService;
 
-@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/checkout")
 public class CheckoutController {
