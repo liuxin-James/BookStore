@@ -695,7 +695,7 @@ select{
  */
 
 .table{
-    margin:0
+    margin:2
 }
 table.table.table-bordered{
     border:2px solid #ccc;
@@ -708,7 +708,7 @@ table.table.table-bordered th{
     BACKGROUND:#129f77;
     color:#fff;
     font-size:14px;
-    padding:7px
+    padding:12px
 }
 .table-responsive{
     padding-right:1px

@@ -1,6 +1,7 @@
 package com.springbootshopping.app.config;
 
 import com.springbootshopping.app.entity.Country;
+import com.springbootshopping.app.entity.Order;
 import com.springbootshopping.app.entity.Product;
 import com.springbootshopping.app.entity.ProductCategory;
 import com.springbootshopping.app.entity.State;
@@ -45,6 +46,8 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         disableHttpMethods(Country.class, config, theUnsupportedActions);
         // disable HTTP methods for States: PUT, POST, DELETE and PATCH
         disableHttpMethods(State.class, config, theUnsupportedActions);
+        // disable HTTP methods for Order: PUT, POST, DELETE and PATCH
+        disableHttpMethods(Order.class, config, theUnsupportedActions);
         // call an internal helper method
         exposeIds(config);
 
