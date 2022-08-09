@@ -13,8 +13,8 @@ import { CartService } from 'src/app/services/cart.service';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
-  currentCategoryId: number = 1;
-  previousCategoryId: number = 1;
+  currentCategoryId: number;
+  previousCategoryId: number;
   searchMode: boolean = false;
 
   // new properties for pagination
@@ -73,6 +73,7 @@ export class ProductListComponent implements OnInit {
 
     // check if "id" parameter is available
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+    console.log(`hasCategoryId=${hasCategoryId}`);
 
     if (hasCategoryId) {
       // get the "id" param string. convert string to a number using the "+" symbol

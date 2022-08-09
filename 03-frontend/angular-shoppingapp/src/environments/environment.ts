@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   bookstoreUrl: "https://localhost:8443/api",
+  stripePublishableKey: "pk_test_51LUOltI0HqvEnqPGteqQ40MDJXZJUNRhIq3E7CQBCt0nZX8oWC238yqafZwoqLRVi6ML5iuoBFgXK9MFSkcbfQuR00Vp8YDKKX",
 };
 
 /*

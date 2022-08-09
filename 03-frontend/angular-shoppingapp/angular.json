@@ -23,8 +23,7 @@
               "src/assets"
             ],
             "allowedCommonJsDependencies": [
-              "lodash",
-              "@babel/runtime-corejs3"
+              "lodash"
             ],
             "styles": [
               "src/styles.css",
